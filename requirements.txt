@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+passlib[pbkdf2]
+python-jose[cryptography]
+pydantic
+python-dotenv
