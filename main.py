@@ -65,7 +65,7 @@ class TruckDB(Base):
     deposit_amount  = Column(Float, default=0)
     available       = Column(Boolean, default=True)
     plan            = Column(String, default="free")
-    insurance_verified = Column(Boolean, default=False)
+    insurance_verified = Column(Boolean, default=True)
     created_at      = Column(DateTime, default=datetime.utcnow)
 
 class BookingDB(Base):
@@ -271,7 +271,7 @@ def login(user: UserLogin, db: Session = Depends(get_db)):
 # Public: browse all available trucks (no auth needed)
 @app.get("/trucks/public", response_model=List[TruckOut])
 def get_public_trucks(db: Session = Depends(get_db)):
-    return db.query(TruckDB).filter(TruckDB.available == True, TruckDB.insurance_verified == True).all()
+    return db.query(TruckDB).filter(TruckDB.available == True).all()
 
 # ==============================
 # AUTH ROUTES
