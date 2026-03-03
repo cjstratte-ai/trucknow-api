@@ -246,8 +246,7 @@ def register(user: UserCreate, db: Session = Depends(get_db)):
         email=user.email,
         hashed_password=hash_password(user.password),
         name=user.name,
-        role=user.role if user.role in ["customer", "vendor"] else "customer"
-    )
+        role=user.role if user.role in ["customer", "vendor", "admin"] else "customer"
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
