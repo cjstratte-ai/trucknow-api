@@ -236,7 +236,6 @@ app.add_middleware(
 @app.get("/")
 def root():
     return {"message": "TruckNow API is running 🚚"}
-
 @app.post("/register")
 def register(user: UserCreate, db: Session = Depends(get_db)):
     if db.query(UserDB).filter(UserDB.email == user.email).first():
@@ -247,6 +246,7 @@ def register(user: UserCreate, db: Session = Depends(get_db)):
         hashed_password=hash_password(user.password),
         name=user.name,
         role=user.role if user.role in ["customer", "vendor", "admin"] else "customer"
+    )
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
