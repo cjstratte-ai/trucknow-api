@@ -4,3 +4,12 @@ __pycache__/
 *.db
 .env
 pip
+trucknow.db
+curl
+dir
+python
+r.json()).then(console.log).catch(console.error)
+__pycache__/
+venv/
+*.pyc
+
