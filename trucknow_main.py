@@ -230,7 +230,9 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
     user = db.query(UserDB).filter(UserDB.email == email).first()
     if user is None:
         raise HTTPException(status_code=401, detail="User not found")
-    return userdef get_optional_user(
+    return user
+
+def get_optional_user(
     token: Optional[str] = Depends(oauth2_scheme),
     db: Session = Depends(get_db)
 ) -> Optional[UserDB]:
