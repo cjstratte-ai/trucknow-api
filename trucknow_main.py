@@ -302,10 +302,9 @@ app.add_middleware(
 # ==============================
 # PUBLIC ROUTES
 # ==============================
-
-@app.get("/")
+    @app.get("/")
 def root():
-    return {"message": "TruckNow API is running 🚚"}
+    return {"message": "TruckNow API running - GUESTBOOKING-V2"}
 
 @app.post("/register")
 def register(user: UserCreate, db: Session = Depends(get_db)):
